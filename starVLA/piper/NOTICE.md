@@ -1,0 +1,3 @@
+The geometry, preparation, video readers, calibration, MessagePack codec, and CPU robot adapters in this directory are adapted from kai0/openpi (Apache-2.0), local reference commit `2c4fe0e8ff4acef4916d4997fd987b8601a0a333` (2026-09-22). The source reference is `/kpfs_ssd/data/wzy/kai0`; runtime does not require that checkout. The original license is preserved in LICENSE.kai0.
+
+Local changes: independent package imports; three-rung Piper preparation; pinned video source paths; QwenPI training/serving and normalization; native Piper-X S2 support; synchronous CLI; checkpoint contract validation.

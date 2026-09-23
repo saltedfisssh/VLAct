@@ -442,3 +442,7 @@ This repository is released under the [MIT License](LICENSE).
   Questions or suggestions: <a href="mailto:yangsenqiao.ai@gmail.com">email the authors</a> or
   <a href="https://github.com/starVLA/VLAct/issues">open an issue</a>.
 </p>
+
+## Piper and Piper-X experiments
+
+See [representation training](docs/piper_representation_ablation.md), [weighted multi-dataset training](docs/piper_mixed_training.md), [Piper-X frame alignment](docs/piper_x_eef_aligned_s2_pair.md), and [robot deployment](docs/piper_deployment.md), and [validation records](docs/piper_validation.md). Full runs initialize the backbone from `VLAct_Qwen3_Pretrain`; single-GPU smoke runs and eight-GPU launch commands are included.

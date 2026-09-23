@@ -1,0 +1,29 @@
+framework:
+  name: QwenPI_v4
+  qwenvl:
+    base_vlm: playground/Pretrained_models/Qwen3-VL-4B-Instruct-Action
+    attn_implementation: sdpa
+  action_model:
+    expert_model_path: playground/Pretrained_models/Qwen3-0.6B
+    action_dim: 20
+    state_dim: 23
+    action_horizon: 50
+    future_action_window_size: 49
+    num_inference_timesteps: 10
+    repeated_diffusion_steps: 1
+    max_seq_len: 256
+    noise_beta_alpha: 1.5
+    noise_beta_beta: 1.0
+    noise_s: 0.999
+    gradient_checkpointing: true
+    logits_to_keep: 1
+datasets:
+  vla_data:
+    dataset_py: piper_datasets
+    balance_dataset_weights: false
+    image_size: [224, 224]
+trainer:
+  enable_gradient_checkpointing: true
+  shortest_angular_joint_loss: false
+  shortest_angular_joint_loss_diff: false
+  endpoint_wrap_loss_weight: 0.0

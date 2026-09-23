@@ -1,0 +1,6 @@
+# Python 3.10 or 3.11. CPU-only versions used to validate the exported client.
+# ROS packages and robot/camera drivers are supplied by the robot workspace.
+numpy==1.26.4
+scipy==1.15.3
+msgpack==1.1.0
+websockets==15.0.1

@@ -612,3 +612,25 @@ DATASET_NAMED_MIXTURES["agilex_franka_5data_manualvel_balance_50"] = (
         target_mass=2.0 * _agilex_franka_non_franka_mass_50,
     )
 )
+
+# Piper experiments use the same (dataset_name, sampling_weight, robot_type)
+# registry contract as the other VLAct datasets. Each task has its own weight.
+DATASET_NAMED_MIXTURES["piper_fold"] = [
+    ("piper_fold_cloth_in_place", 1.0, "piper"),
+]
+DATASET_NAMED_MIXTURES["piper_x_native"] = [
+    ("piper_x_hang_mugs", 1.0, "piper_x"),
+    ("piper_x_push_t", 1.0, "piper_x"),
+    ("piper_x_stack_blocks", 1.0, "piper_x"),
+    ("piper_x_stack_bowls", 1.0, "piper_x"),
+    ("piper_x_swap_t", 1.0, "piper_x"),
+    ("piper_x_sweep_blocks", 1.0, "piper_x"),
+    ("piper_x_sweep_the_trash", 1.0, "piper_x"),
+]
+DATASET_NAMED_MIXTURES["piper_x_aligned"] = [
+    (name, weight, "piper_x_aligned")
+    for name, weight, _ in DATASET_NAMED_MIXTURES["piper_x_native"]
+]
+DATASET_NAMED_MIXTURES["piper_all_aligned"] = (
+    DATASET_NAMED_MIXTURES["piper_fold"] + DATASET_NAMED_MIXTURES["piper_x_aligned"]
+)

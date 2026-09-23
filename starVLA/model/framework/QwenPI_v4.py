@@ -383,6 +383,8 @@ class Qwen_PI_v4(baseframework):
         qwen_inputs = self.qwen_vl_interface.build_qwenvl_inputs(
             images=batch_images, instructions=instructions
         )
+        if hasattr(self.config.framework.action_model, "logits_to_keep"):
+            qwen_inputs["logits_to_keep"] = int(self.config.framework.action_model.logits_to_keep)
         with torch.autocast("cuda", dtype=torch.bfloat16):
             outputs = self.qwen_vl_interface(
                 **qwen_inputs,
@@ -439,7 +441,12 @@ class Qwen_PI_v4(baseframework):
 
         # Forward through all expert layers
         for layer in self.expert_layers:
-            x = layer(x, prefix_hidden, time_cond, position_embeddings)
+            if self.training and getattr(self.config.framework.action_model, "gradient_checkpointing", False):
+                from torch.utils.checkpoint import checkpoint
+
+                x = checkpoint(layer, x, prefix_hidden, time_cond, position_embeddings, use_reentrant=False)
+            else:
+                x = layer(x, prefix_hidden, time_cond, position_embeddings)
 
         x = self.expert_final_norm(x, time_cond)
         return self.action_out_proj(x)

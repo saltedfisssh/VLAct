@@ -1,0 +1,11 @@
+{
+  "head": "/camera_f/color/image_raw",
+  "left_camera": "/camera_l/color/image_raw",
+  "right_camera": "/camera_r/color/image_raw",
+  "left_state": "/puppet/joint_left",
+  "right_state": "/puppet/joint_right",
+  "left_joint_command": "/master/joint_left",
+  "right_joint_command": "/master/joint_right",
+  "left_pose_command": "/pos_cmd_left",
+  "right_pose_command": "/pos_cmd_right"
+}
